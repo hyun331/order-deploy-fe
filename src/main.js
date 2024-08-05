@@ -4,6 +4,8 @@ import App from './App.vue' //App이란 파일을 가져와서
 //src/router/index.js파일의 router를 사용하겠다는 선언
 import router from '@/router/index.js'
 import vuetify from './plugins/vuetify';
+import '@mdi/font/css/materialdesignicons.css'
+import './styles.css';
 
 // createApp(App).mount('#app')    
 //위의 코드 한줄과 아래 코드 2줄이 같음
