@@ -35,13 +35,19 @@ export default{
     },
     async created(){
         //토큰을 같이 보내야함
-        const token = localStorage.getItem('token');
+        //const token = localStorage.getItem('token');
         //{headers: {Authorization: 'Bearer 토큰값', ....}}
-        const headers = {Authorization: `Bearer ${token}`};
+        //const headers = {Authorization: `Bearer ${token}`};
         // headers : headers로 나감 {"headers":headers} == {headers}
-        const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`, {"headers":headers});
-        // pageing 처리 되어있어서 content로 가져와야함. postman으로 test후 실행해보기
-        this.memberList = response.data.result;
+        //const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`, {"headers":headers});
+        try{
+            const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`);
+            // pageing 처리 되어있어서 content로 가져와야함. postman으로 test후 실행해보기
+            this.memberList = response.data.result;
+        }catch(e){
+            console.log(e);
+        }
+        
     }
 }
 </script>
