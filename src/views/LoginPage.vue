@@ -2,7 +2,7 @@
     <v-container>
         <v-row>
             <v-row justify="center">
-                <v-col cols="12" sm="2" md="4">
+                <v-col cols="12" sm="6" md="8">
                     <v-card>
                         <v-card-title class="text-h5 text-center">LOGIN</v-card-title>
                         <v-card-text>
@@ -38,9 +38,7 @@
          <!-- @update:dialog : 모달 컴포넌트가 @update:dialog라는 이벤트를 발생시킬 때 실행될 이벤트 핸들러를 정의 -->
           <!-- $event는 자식 요소로부터 전달된 값. true/fasle가 모달로부터 전달 -->
         <ResetPasswordModal 
-        v-model="resetPasswordModal"
-        @update:dialog="resetPassword = $event"
-        >
+        v-model="resetPassword" @update:dialog="resetPassword = $event">
 
         </ResetPasswordModal>
     </v-container>
@@ -51,7 +49,6 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 //modal 가져다 쓰는 방법
 import ResetPasswordModal from './ResetPasswordModal.vue';
-import ResetPasswordModal from './ResetPasswordModal.vue';
 export default {
     components:{
         ResetPasswordModal
@@ -60,7 +57,7 @@ export default {
         return {
             email: "",
             password: "",
-            resetPasswordModal: false
+            resetPassword: false,
 
         }
     },
@@ -72,9 +69,11 @@ export default {
                     password: this.password
                 };
                 const response = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/member/doLogin`, LoginData);
-                console.log(response.data.result.token);
+                console.log(response.data);
+                // console.log(response.data.error_message);
                 //localstorage라는 브라우저의 특정 공간에 서버로부터 받아온 토큰값 저장
                 const token = response.data.result.token;
+
                 const refreshToken = response.data.result.refreshToken;
                 //페이로드에 있는 role 가져오려면 decode 해야함
                 const role = jwtDecode(token).role;
@@ -89,11 +88,13 @@ export default {
                 window.location.href = '/';
 
             } catch (e) {
-                console.log(e.response.data.error_message);
+                console.log("heeer")
+                console.log(e);
+
             }
         },
         showPasswordModal(){
-            this.resetPasswordModal = true;
+            this.resetPassword = true;
         }
     }
 

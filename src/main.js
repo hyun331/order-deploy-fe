@@ -14,9 +14,9 @@ import './styles.css';
 // const app = createApp(App);
 // app.mount('#app');
 
-//axios요청 인터셉터를 설정하여 모든 요청에 엑세스 토큰을 포함
-
 const app = createApp(App);
+
+//axios요청 인터셉터를 설정하여 모든 요청에 엑세스 토큰을 포함
 axios.interceptors.request.use(
     config => {
         const token = localStorage.getItem('token');

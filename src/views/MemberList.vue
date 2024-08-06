@@ -29,7 +29,11 @@ export default{
             // thead의 th와 같은 느낌. align - 정렬 기능!
             tableHeaders:[{title:'ID', key: 'id', align:'start'},
             {title:'NAME', key: 'name', align:'start'},
-            {title:'EMAIL', key:'email', align:'start'}],
+            {title:'EMAIL', key:'email', align:'start'},
+            {title: '주문수량', key:'orderCount', align:'center'}
+        ],
+
+
             memberList:[]
         }
     },
