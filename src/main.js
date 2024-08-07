@@ -56,6 +56,9 @@ axios.interceptors.response.use(
             }
             
         }
+
+        //에러나면 해당인터셉터 무시되고 사용자의 본래 요청인 화면으로 라우팅
+        return Promise.reject(error);
     }
 )
 

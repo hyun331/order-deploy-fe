@@ -9,6 +9,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import { practiceRouter } from './practiceRouter';
 import { memberRouter } from './memberRouter';
 import {productRouter} from './productRouter';
+import { orderRouter } from './orderRouter';
 const routes = [
     // {
     //     // home으로 오면 homecomponent로 보내겠다
@@ -26,7 +27,8 @@ const routes = [
 
     ...practiceRouter,
     ...memberRouter,
-    ...productRouter
+    ...productRouter,
+    ...orderRouter
 
 ]
 
