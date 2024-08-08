@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row justify="center">
-            <v-col>
+            <v-col cols="12" md="8">
                 <v-card>
                     <v-card-title class="text-cneter text-h5">
                         주문조회

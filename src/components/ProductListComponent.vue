@@ -36,7 +36,7 @@
                 </v-form>
             </v-col>
             <v-col cols="auto" v-if="!isAdmin">
-                <v-btn color="secondary" class="mr-2">장바구니</v-btn>
+                <v-btn color="secondary" @click="addCart" class="mr-2">장바구니</v-btn>
                 <v-btn color="success" @click="createOrder">주문하기</v-btn>
             </v-col>
 
@@ -96,8 +96,11 @@
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 export default{
-    //isAmin이라는 변수를 넘겨받을 수 있다.
+    computed:{
+        ...mapGetters(['getProductsInCart'])
+    },
     props:['isAdmin', 'pageTitle'],
     data(){
         return{
@@ -202,6 +205,18 @@ export default{
             if(isBottom && !this.isLastPage && !this.isLoading){
                 this.loadProduct();
             }
+        },
+
+        addCart(){  //장바구니. orderProducts를 전역 관리
+            const orderProducts = Object.keys(this.selected).filter(key=>this.selected[key])
+            .map(key=>{
+                const product = this.productList.find(p => p.id == key)
+                return {id:product.id, name:product.name, quantity:product.quantity};
+            });
+            orderProducts.forEach(p=> this.$store.dispatch('addCart', p));
+            console.log(this.getProductsInCart);
+            // window.location.reload();
+            
         },
         async createOrder(){
             //선택된 keys들에 filter를 걸어 selected된 것들만 골리하

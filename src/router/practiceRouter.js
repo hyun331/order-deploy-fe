@@ -5,6 +5,7 @@ import HookComponent from '@/components/practice/HookComponent.vue';
 import AxiosTestComponent from '@/components/practice/AxiosTestComponent.vue';
 import WatchUpdateComponent from '@/components/practice/WatchUpdateComponent.vue';
 import RouterTestComponent from '@/components/practice/RouterTestComponent.vue';
+import StoreTestComponent from '@/components/practice/StoreTestComponent.vue';
 
 export const practiceRouter = [
     {
@@ -41,5 +42,10 @@ export const practiceRouter = [
         path: "/practice/routertest",
         name: "RouterTestComponent",
         component: RouterTestComponent
+    },
+    {
+        path: "/practice/storetest",
+        name: "StoreTestComponent",
+        component: StoreTestComponent
     }
 ]

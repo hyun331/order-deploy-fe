@@ -83,6 +83,9 @@ export default {
                 localStorage.setItem('refreshToken', refreshToken);
                 localStorage.setItem('role', role);
 
+
+                
+
                 //this.$router.push() 사용불가 -> header를 제외한 안쪽에만 reload되기 때문에 header가 고쳐지지 않음
                 // this.$router.push("/");
                 window.location.href = '/';
