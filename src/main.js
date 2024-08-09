@@ -43,8 +43,9 @@ axios.interceptors.response.use(
                 window.location.reload();
             }catch(e){
                 //refresh token 만료되면 로그인해야함
-                localStorage.clear();
                 window.location.href = "/login";
+                localStorage.clear();
+
             }
             
         }

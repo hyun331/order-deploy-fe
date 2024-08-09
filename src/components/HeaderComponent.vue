@@ -11,7 +11,7 @@
                     <div v-if="userRole==='ADMIN'">
                         <v-btn :to="{path:'/member/list'}">회원관리</v-btn>
                         <v-btn :to="{path:'/product/manage'}">상품관리</v-btn>
-                        <v-btn :to="{path:'/order/list'}">실시간 주문</v-btn>
+                        <v-btn href="/order/list">실시간 주문( {{liveQuantity}} )</v-btn>
                     </div>
                 </v-col>
                  
@@ -43,6 +43,8 @@ import {EventSourcePolyfill} from 'event-source-polyfill';
             return{
                 userRole: null,
                 isLogin: false,
+                //실시간 주문 개수 - 알림 기능을 통해
+                liveQuantity : 0,
             }
         },
         computed:{
@@ -62,6 +64,18 @@ import {EventSourcePolyfill} from 'event-source-polyfill';
                 sse.addEventListener('connect', (event)=>{
                     console.log(event);
                 })
+                
+                //서버에서 발행한 ordered event를 잡는다
+                sse.addEventListener('ordered', (event)=>{
+                    console.log(event.data);
+                    this.liveQuantity ++;
+                })
+
+                //에러발생시 연결 끊기
+                sse.onerror = (error) => {
+                    console.log(error);
+                    sse.close();
+                }
             }
         },
         methods:{
