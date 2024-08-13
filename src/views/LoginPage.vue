@@ -68,7 +68,7 @@ export default {
                     email: this.email,
                     password: this.password
                 };
-                const response = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/member/doLogin`, LoginData);
+                const response = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/member-service/member/doLogin`, LoginData);
                 console.log(response.data);
                 // console.log(response.data.error_message);
                 //localstorage라는 브라우저의 특정 공간에 서버로부터 받아온 토큰값 저장
