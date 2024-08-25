@@ -18,7 +18,7 @@
                 
                 <!-- 가운데 정렬 -->
                 <v-col class="text-center">
-                    <v-btn :to="{path:'/'}">java shop!!!변경사항?</v-btn>
+                    <v-btn :to="{path:'/'}">java shop!!!444</v-btn>
                 </v-col>
                 <!-- 오른쪽 정렬 -->
                 <v-col class="d-flex justify-end">
