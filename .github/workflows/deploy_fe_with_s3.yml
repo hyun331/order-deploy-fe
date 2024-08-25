@@ -35,6 +35,7 @@ jobs:
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
           aws-secret-access-key-id: ${{secrets.AWS_SECRET}}
+          aws-region: "ap-northeast-2"
       
       #s3 bucket을 비워야함
       - name: clear s3 bucket
