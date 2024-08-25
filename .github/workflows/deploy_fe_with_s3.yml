@@ -29,3 +29,16 @@ jobs:
         working-directory: .
         run: npm run build
 
+      # aws configure해서 액세스 키, 리전등 내용을 집어넣음
+      - name: setup aws cli
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
+          aws-secret-access-key-id: ${{secrets.AWS_SECRET}}
+      
+      #s3 bucket을 비워야함
+      - name: clear s3 bucket
+      # s3://내 버킷명
+        run: aws s3 rm s3://www.seunghyun.shop/ --recursive
+
+
