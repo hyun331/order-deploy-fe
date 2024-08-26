@@ -178,7 +178,7 @@ export default{
                     params.category = this.searchValue;
                 }
                 //localhost:8080/product/list?category=fruits&size=5&pag0
-                const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/product-service/product/list`, {params});
+                const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/product/list`, {params});
                 //product에 quantity라는 컬럼이 추가된 느낌?
                 const additionalData = response.data.result.content.map(p => ({...p, quantity:0}));
             
@@ -236,7 +236,7 @@ export default{
             }
             
             try{
-                await axios.post(`${process.env.VUE_APP_API_BASE_URL}/order-service/ordering/create`, orderProducts);
+                await axios.post(`${process.env.VUE_APP_API_BASE_URL}/ordering/create`, orderProducts);
                 alert("정상 주문 완료");
                 window.location.reload();
 
