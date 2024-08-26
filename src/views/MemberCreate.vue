@@ -75,7 +75,7 @@ export default {
 
                 }
                 //axios는 비동기이므로 async, await를 붙이지 않으면 바로 this.$router...거기로감
-                await axios.post(`${process.env.VUE_APP_API_BASE_URL}/member-service/member/create`, registerData);
+                await axios.post(`${process.env.VUE_APP_API_BASE_URL}/member/create`, registerData);
                 this.$router.push("/");
             }catch(e){
                 const error_message = e.response.data.error_message;
