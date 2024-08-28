@@ -47,7 +47,7 @@ jobs:
         run: aws s3 cp ./dist s3://www.seunghyun.shop/ --recursive
 
       # cloudfront 무효화 작업
-      # - name: invalidate cloudfront caches
-      #   run: aws cloudfront create-invalidation --distribution-id E2SMD84Z1PBRG1 --paths "/*"
+      - name: invalidate cloudfront caches
+        run: aws cloudfront create-invalidation --distribution-id E2SMD84Z1PBRG1 --paths "/*"
 
 
