@@ -48,6 +48,6 @@ jobs:
 
       # cloudfront 무효화 작업
       - name: invalidate cloudfront caches
-        run: aws cloudfront create-invalidation --distribution-id E2SMD84Z1PBRG1 --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id E3PJKDL7CHTU4T --paths "/*"
 
 
